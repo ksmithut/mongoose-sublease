@@ -1,0 +1,61 @@
+{
+  "name": "mongoose-sublease",
+  "version": "0.1.0",
+  "description": "A library to help make database-level multitenancy in mongoose easy",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run test:lint",
+    "test": "npm run test:unit",
+    "posttest": "npm run coverage",
+    "test:lint": "./node_modules/.bin/eslint . --ignore-path=.gitignore",
+    "test:unit": "NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha",
+    "coverage": "./node_modules/.bin/istanbul check-coverage",
+    "coverage:report": "open coverage/lcov-report/index.html",
+    "coverage:codeclimate": "cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter"
+  },
+  "files": [
+    "index.js",
+    "express.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksmithut/mongoose-sublease.git"
+  },
+  "keywords": [
+    "mongoose",
+    "multitenancy",
+    "tenant"
+  ],
+  "author": "ksmithut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ksmithut/mongoose-sublease/issues"
+  },
+  "homepage": "https://github.com/ksmithut/mongoose-sublease#readme",
+  "eslintConfig": {
+    "extends": [
+      "ksmithut",
+      "ksmithut/node",
+      "ksmithut/es6-node",
+      "ksmithut/mocha"
+    ],
+    "rules": {}
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "mongoose": ">=4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "eslint": "^3.15.0",
+    "eslint-config-ksmithut": "^2.3.0",
+    "express": "^4.14.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
+    "mockgoose": "^6.0.8",
+    "mongoose": "^4.8.1",
+    "supertest": "^3.0.0"
+  }
+}

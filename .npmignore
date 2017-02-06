@@ -1,0 +1,4 @@
+lib/**/*.spec.js
+coverage
+examples
+test
