@@ -43,7 +43,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "mongoose": ">=4"
+    "mongoose": "4.x"
   },
   "devDependencies": {
     "chai": "^3.5.0",
