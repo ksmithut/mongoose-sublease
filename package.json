@@ -9,6 +9,9 @@
     "coverage.report": "open coverage/lcov-report/index.html",
     "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter"
   },
+  "engine": {
+    "node": ">= 6"
+  },
   "files": [
     "index.js",
     "express.js"
