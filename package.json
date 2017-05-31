@@ -4,14 +4,10 @@
   "description": "A library to help make database-level multitenancy in mongoose easy",
   "main": "index.js",
   "scripts": {
-    "pretest": "npm run test:lint",
-    "test": "npm run test:unit",
-    "posttest": "npm run coverage",
-    "test:lint": "./node_modules/.bin/eslint . --ignore-path=.gitignore",
-    "test:unit": "NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha",
-    "coverage": "./node_modules/.bin/istanbul check-coverage",
-    "coverage:report": "open coverage/lcov-report/index.html",
-    "coverage:codeclimate": "cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter"
+    "pretest": "standard",
+    "test": "jest --forceExit",
+    "coverage.report": "open coverage/lcov-report/index.html",
+    "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter"
   },
   "files": [
     "index.js",
@@ -34,28 +30,28 @@
   "homepage": "https://github.com/ksmithut/mongoose-sublease#readme",
   "eslintConfig": {
     "extends": [
-      "ksmithut",
-      "ksmithut/node",
-      "ksmithut/es6-node",
-      "ksmithut/mocha"
+      "standard"
     ],
-    "rules": {}
+    "rules": {},
+    "root": true
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testEnvironment": "node"
   },
   "dependencies": {},
   "peerDependencies": {
     "mongoose": "4.x"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "codeclimate-test-reporter": "^0.4.0",
-    "eslint": "^3.15.0",
-    "eslint-config-ksmithut": "^2.3.0",
-    "express": "^4.14.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "mocha-lcov-reporter": "^1.2.0",
-    "mockgoose": "^6.0.8",
-    "mongoose": "^4.8.1",
+    "@types/jest": "^19.2.3",
+    "codeclimate-test-reporter": "^0.4.1",
+    "eslint": "^3.19.0",
+    "express": "^4.15.3",
+    "jest": "^20.0.4",
+    "mockgoose": "^7.3.1",
+    "mongoose": "^4.10.4",
+    "standard": "^10.0.2",
     "supertest": "^3.0.0"
   }
 }
