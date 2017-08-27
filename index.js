@@ -1,35 +1,31 @@
 'use strict'
 
-module.exports = function mongooseSublease (rootConnection, models) {
-  const tenants = {}
-  const schemas = schemaStore(models)
+module.exports = function mongooseSublease (rootConnection, sharedSchemas) {
+  const tenantsConnections = {}
+  const sharedSchemasStore = schemaStore(sharedSchemas)
 
-  return name => {
-    if (!tenants[name]) {
-      tenants[name] = rootConnection.useDb(name)
-      schemas.apply(tenants[name])
+  return tenantId => {
+    if (!tenantsConnections[tenantId]) {
+      tenantsConnections[tenantId] = rootConnection.useDb(tenantId)
+      sharedSchemasStore.initModelsForConnection(tenantsConnections[tenantId])
     }
-    return tenants[name]
+    return tenantsConnections[tenantId]
   }
 }
 
 function schemaStore (schemas) {
   schemas = schemas || {}
-  const sharedSchemas = []
+  const sharedModelsData = []
   const store = {
-    model (modelName, schema) {
-      sharedSchemas.push({ modelName, schema })
-      return store
-    },
-    apply (connection) {
-      sharedSchemas.forEach(schema => {
-        connection.model(schema.modelName, schema.schema)
+    initModelsForConnection (connection) {
+      sharedModelsData.forEach(model => {
+        connection.model(model.name, model.schema)
       })
       return store
     }
   }
-  Object.keys(schemas).forEach(modelName => {
-    store.model(modelName, schemas[modelName])
+  Object.keys(schemas).forEach(schemaName => {
+    sharedModelsData.push({ name: schemaName, schema: schemas[schemaName] })
   })
   return store
 }
