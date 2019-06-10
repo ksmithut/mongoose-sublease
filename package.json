@@ -7,7 +7,9 @@
     "pretest": "standard",
     "test": "jest --forceExit",
     "coverage.report": "open coverage/lcov-report/index.html",
-    "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter"
+    "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter",
+    "format": "prettier-eslint src/**/*.js --write",
+    "lint": "eslint src/**/*.js && prettier-eslint src/**/*.js --list-different"
   },
   "engine": {
     "node": ">= 6"
@@ -31,13 +33,6 @@
     "url": "https://github.com/ksmithut/mongoose-sublease/issues"
   },
   "homepage": "https://github.com/ksmithut/mongoose-sublease#readme",
-  "eslintConfig": {
-    "extends": [
-      "standard"
-    ],
-    "rules": {},
-    "root": true
-  },
   "jest": {
     "collectCoverage": true,
     "testEnvironment": "node"
@@ -47,14 +42,20 @@
     "mongoose": "4.x"
   },
   "devDependencies": {
-    "@types/jest": "^19.2.3",
-    "codeclimate-test-reporter": "^0.4.1",
-    "eslint": "^3.19.0",
-    "express": "^4.15.3",
-    "jest": "^20.0.4",
-    "mockgoose": "^7.3.1",
-    "mongoose": "^4.10.4",
-    "standard": "^10.0.2",
-    "supertest": "^3.0.0"
+    "@types/jest": "^24.0.13",
+    "codeclimate-test-reporter": "^0.5.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "mockgoose": "^8.0.2",
+    "mongoose": "^5.5.14",
+    "prettier-eslint-cli": "^4.7.1",
+    "standard": "^12.0.1",
+    "supertest": "^4.0.2"
   }
 }
