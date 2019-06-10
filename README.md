@@ -99,8 +99,8 @@ const getTenant = sublease(mongoose.connection, {
   User: userSchema,
 })
 
-const tenant1 = getTenant('tenant1')
-const tenant2 = getTenant('tenant2')
+const tenant1 = getTenant('tenant1') // 'tenant1' is the database name
+const tenant2 = getTenant('tenant2') // 'tenant2' is the database name
 
 tenant1.model('User')
   .create({
@@ -133,11 +133,13 @@ monogoose models.
 
   ```js
   const userSchema = new mongoose.Schema({
-    name: String,
+    name: String
   })
-  app.use(mongooseModel(mongoose.connection, {
-    User: userSchema
-  }))
+  app.use(
+    mongooseModel(mongoose.connection, {
+      User: userSchema
+    })
+  )
   ```
 
 `subleaseMiddleware(rootConnection, models, options)`
