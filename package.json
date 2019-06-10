@@ -39,7 +39,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "mongoose": "4.x"
+    "mongoose": "4.x || 5.x"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
