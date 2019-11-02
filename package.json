@@ -1,6 +1,6 @@
 {
   "name": "mongoose-sublease",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A library to help make database-level multitenancy in mongoose easy",
   "main": "index.js",
   "scripts": {
