@@ -47,7 +47,7 @@ describe('mongoose-model', () => {
     return mockgoose.prepareStorage().then(() => {
       return mongoose.connect('mongodb://localhost/test')
     })
-  }, 240000)
+  }, 600000)
 
   afterEach(() => mockgoose.helper.reset())
 
