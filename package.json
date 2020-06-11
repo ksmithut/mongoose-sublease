@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "standard",
-    "test": "jest --forceExit",
+    "test": "jest",
     "coverage.report": "open coverage/lcov-report/index.html",
     "codeclimate": "cat ./coverage/lcov.info | codeclimate-test-reporter",
     "format": "prettier-eslint src/**/*.js --write",
@@ -52,7 +52,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "express": "^4.17.1",
     "jest": "^26.0.1",
-    "mockgoose": "^8.0.4",
+    "mongodb-memory-server": "^6.6.1",
     "mongoose": "5.9.18",
     "prettier-eslint-cli": "^5.0.0",
     "standard": "^14.3.4",

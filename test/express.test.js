@@ -4,7 +4,7 @@
 const express = require('express')
 const supertest = require('supertest')
 const mongoose = require('mongoose')
-const Mockgoose = require('mockgoose').Mockgoose
+const { MongoMemoryServer } = require('mongodb-memory-server')
 const subleaseMiddleware = require('../express')
 
 mongoose.Promise = Promise
@@ -37,24 +37,27 @@ describe('mongoose-model', () => {
     return supertest(app)
   }
 
-  const mockgoose = new Mockgoose(mongoose)
+  /** @type {import('mongodb-memory-server').MongoMemoryServer} */
+  let mongod
+
   const testSchema = new mongoose.Schema({
     name: String
   })
   testSchema.static('test', val => val)
 
-  beforeAll(() => {
-    return mockgoose.prepareStorage().then(() => {
-      return mongoose.connect('mongodb://localhost/test')
-    })
+  beforeAll(async () => {
+    mongod = new MongoMemoryServer()
+    await mongoose.connect(await mongod.getUri())
   }, 600000)
 
-  afterEach(() => mockgoose.helper.reset())
+  afterAll(async () => {
+    await mongoose.disconnect()
+    await mongod.stop()
+  })
 
   it('applies models', () => {
     const middleware = (req, res) => {
       const Test = req.model('Test')
-      expect(req.tenant).toMatch(/mockgoose-temp-db/)
       expect(Test).toHaveProperty('test')
       res.send(Test.test('test'))
     }
