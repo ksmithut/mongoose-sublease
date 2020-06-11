@@ -4,6 +4,6 @@ os:
   - linux
 node_js:
   - 'stable'
-  - '10'
   - '12'
+  - '14'
 after_success: npm run coverage:codeclimate

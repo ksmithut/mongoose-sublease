@@ -2,23 +2,23 @@
 
 const sublease = require('./')
 
-module.exports = function expressSublease (rootConnection, models, options) {
-  options = Object.assign(
-    {
-      connectionKey: 'connection',
-      tenantKey: 'tenant',
-      modelKey: 'model',
-      getDbName: (req, connection) => connection.name
-    },
-    options
-  )
+module.exports = function expressSublease (
+  rootConnection,
+  models,
+  {
+    connectionKey = 'mongooseConnection',
+    tenantKey = 'tenant',
+    modelKey = 'model',
+    getDbName = (req, connection) => connection.name
+  } = {}
+) {
   const getTenant = sublease(rootConnection, models)
   return (req, res, next) => {
-    const dbName = options.getDbName(req, rootConnection)
+    const dbName = getDbName(req, rootConnection)
     const tenant = getTenant(dbName)
-    req[options.tenantKey] = dbName
-    req[options.connectionKey] = tenant
-    req[options.modelKey] = tenant.model.bind(tenant)
+    req[tenantKey] = dbName
+    req[connectionKey] = tenant
+    req[modelKey] = tenant.model.bind(tenant)
     next()
   }
 }
