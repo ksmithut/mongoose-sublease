@@ -148,7 +148,7 @@ Returns a middleware that applies the connection info to the request.
 The `rootConnection` and `models` arguments are the same as above.
 
 - `options.connectionKey` String - The key to use when attaching the connection
-  to the request object. Default: `connection`. e.g. `req.connection`.
+  to the request object. Default: `mongooseConnection`. e.g. `req.mongooseConnection`.
 
 - `options.tenantKey` String - The key to use when attaching the name of the
   tenant. Default `tenant`. e.g. `req.tenantKey`.

@@ -111,7 +111,7 @@ describe('mongoose-model', () => {
 
   it('works without models', () => {
     const middleware = (req, res) => {
-      expect(Object.keys(req.connection.models)).toHaveLength(0)
+      expect(Object.keys(req.mongooseConnection.models)).toHaveLength(0)
       res.send('success')
     }
     const request = getRequest({
