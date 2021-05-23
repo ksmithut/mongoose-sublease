@@ -3,9 +3,6 @@
 [![NPM version](https://img.shields.io/npm/v/mongoose-sublease.svg?style=flat)](https://www.npmjs.org/package/mongoose-sublease)
 [![Dependency Status](https://img.shields.io/david/ksmithut/mongoose-sublease.svg?style=flat)](https://david-dm.org/ksmithut/mongoose-sublease)
 [![Dev Dependency Status](https://img.shields.io/david/dev/ksmithut/mongoose-sublease.svg?style=flat)](https://david-dm.org/ksmithut/mongoose-sublease#info=devDependencies&view=table)
-[![Code Climate](https://img.shields.io/codeclimate/github/ksmithut/mongoose-sublease.svg)](https://codeclimate.com/github/ksmithut/mongoose-sublease)
-[![Build Status](https://img.shields.io/travis/ksmithut/mongoose-sublease/master.svg?style=flat)](https://travis-ci.org/ksmithut/mongoose-sublease)
-[![Coverage Status](https://img.shields.io/codeclimate/coverage/github/ksmithut/mongoose-sublease.svg?style=flat)](https://codeclimate.com/github/ksmithut/mongoose-sublease)
 
 Makes is easy to do database-level multitenancy with mongoose. Even easier with
 express.

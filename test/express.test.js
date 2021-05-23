@@ -1,6 +1,7 @@
 /* eslint-env jest */
 'use strict'
 
+const os = require('os')
 const express = require('express')
 const supertest = require('supertest')
 const mongoose = require('mongoose')
@@ -46,7 +47,11 @@ describe('mongoose-model', () => {
   testSchema.static('test', val => val)
 
   beforeAll(async () => {
-    mongod = new MongoMemoryServer()
+    const options = { binary: {} }
+    if (os.platform() === 'darwin' && os.arch() === 'arm64') {
+      options.binary.arch = 'x64'
+    }
+    mongod = new MongoMemoryServer(options)
     await mongoose.connect(await mongod.getUri())
   }, 600000)
 
